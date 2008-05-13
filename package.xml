@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.7.1" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+ <name>File_Sitemap</name>
+ <channel>pear.php.net</channel>
+ <summary>Create and manage sitemap files.</summary>
+ <description>This package allow to create sitemap files used to describe your
+  website to help search engines indexing it. This package contains all needed
+  functions to create, read, save, add, modify and remove url, compress to
+  gzip, notify search engine and test url in the sitemap or sitemap index.
+ </description>
+ <lead>
+  <name>Charles Brunet</name>
+  <user>cbrunet</user>
+  <email>charles.fmj@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-05-13</date>
+ <time>13:26:00</time>
+ <version>
+  <release>0.1.2</release>
+  <api>0.9</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.html">
+  BSD License</license>
+ <notes>First release.
+ </notes>
+ <contents>
+  <dir name="/" baseinstalldir="File">
+   <file name="Sitemap.php" role="php">
+    <tasks:replace from="@package_version@" to="version" type="package-info" />
+   </file>
+   <dir name="Sitemap">
+    <file name="Index.php" role="php">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+    <file name="Exception.php" role="php">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+    <file name="Base.php" role="php">
+     <tasks:replace from="@package_version@" to="version" type="package-info" />
+    </file>
+   </dir>
+   <dir name="tests">
+    <file name="sitemap_add_remove.phpt" role="test"/>
+    <file name="sitemap_load_save.phpt" role="test"/>
+    <file name="sitemapindex_add_remove.phpt" role="test"/>
+    <file name="sitemapindex_load_save.phpt" role="test"/>
+    <file name="sitemap_validate.phpt" role="test"/>
+    <file name="sitemap_parse.phpt" role="test"/>
+    <file name="sitemap_test.phpt" role="test"/>
+   </dir>
+   <dir name="examples">
+    <file name="sitemap_example.php" role="doc"/>
+   </dir>
+  </dir> 
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0b1</min>
+   </pearinstaller>
+   <extension>
+    <name>zlib</name>
+   </extension>
+  </required>
+  <optional>
+   <package>
+    <name>HTTP_Request</name>
+    <channel>pear.php.net</channel>
+   </package>
+  </optional>
+ </dependencies>
+ <phprelease />
+</package>
