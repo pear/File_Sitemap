@@ -72,6 +72,9 @@ http://pear.php.net/dtd/package-2.0.xsd">
    <extension>
     <name>zlib</name>
    </extension>
+   <extension>
+    <name>dom</name>
+   </extension>
   </required>
   <optional>
    <package>

@@ -47,7 +47,7 @@ require_once "PEAR/Exception.php";
  * @package  File_Sitemap
  * @author   Charles Brunet <charles.fmj@gmail.com>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
- * @version  Release: 0.1.1
+ * @version  Release: @package_version@
  * @link     http://pear.php.net/package/File_Sitemap
  */
 class File_Sitemap_Exception extends PEAR_Exception

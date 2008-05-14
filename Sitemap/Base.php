@@ -319,7 +319,7 @@ abstract class File_Sitemap_Base
     public function notify($url,
             $site = 'http://www.google.com/webmasters/sitemaps/ping')
     {
-        include_once 'HTTP/Request.php';
+        $this->_includeHTTPRequest();
 
         // check that $url exists
         $req = new HTTP_Request('');
@@ -367,7 +367,7 @@ abstract class File_Sitemap_Base
      */
     public function test(&$results = array())
     {
-        include_once 'HTTP/Request.php';
+        $this->_includeHTTPRequest();
 
         $req   = new HTTP_Request('');
         $allok = true;
@@ -400,6 +400,29 @@ abstract class File_Sitemap_Base
         return $this->dom->schemaValidate($schema);
     }
 
+    /**
+     * Check for HTTP_Request package and include it
+     * 
+     * @return void
+     */
+    private function _includeHTTPRequest()
+    {
+        static $included = false;
+
+        if ($included) {
+            return;
+        }
+
+        @include_once 'HTTP/Request.php';
+
+        if (!class_exists('HTTP_Request')) {
+            throw new File_Sitemap_Exception(
+                    'HTTP_Request class not found.',
+                File_Sitemap_Exception::ERROR);
+        }
+    
+        $included = true;
+    }
 }
 
 ?>
