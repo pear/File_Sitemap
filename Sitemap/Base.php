@@ -32,7 +32,7 @@
  *
  * @category File
  * @package  File_Sitemap
- * @author   Charles Brunet <charles.fmj@gmail.com>
+ * @author   Charles Brunet <cbrunet@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
  * @version  CVS: $Id$
  * @link     http://pear.php.net/package/File_Sitemap
@@ -45,9 +45,9 @@ require_once "File/Sitemap/Exception.php";
  *
  * @category File
  * @package  File_Sitemap
- * @author   Charles Brunet <charles.fmj@gmail.com>
+ * @author   Charles Brunet <cbrunet@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
- * @version  Release: @package_version@
+ * @version  Release: 0.1.2
  * @link     http://pear.php.net/package/File_Sitemap
  */
 abstract class File_Sitemap_Base
@@ -85,8 +85,10 @@ abstract class File_Sitemap_Base
         $this->dom           = $imp->createDocument(self::XMLNS, $root);
         $this->dom->version  = '1.0';
         $this->dom->encoding = 'UTF-8';
-        $attr                = $this->dom->createAttributeNS(self::XSI,
-                'xsi:schemaLocation');
+        $attr                = $this->dom->createAttributeNS(
+            self::XSI,
+            'xsi:schemaLocation'
+        );
         $attr->value         = self::XMLNS.' '.$schema;
         $this->dom->documentElement->appendChild($attr);
     }
@@ -122,19 +124,36 @@ abstract class File_Sitemap_Base
      */
     protected function updateNode($urlNode, $nodeName, $nodeVal)
     {
-        $exists = false;
+        $beforeNode = null;
+        switch ($nodeName) {
+        case 'lastmod':
+            $before = array('changefreq', 'priority');
+            break;
+        case 'changefreq':
+            $before = array('priority');
+            break;
+        default:
+            $before = array();
+        }
+
         // replace old priority if it exists
         foreach ($urlNode->childNodes as $child) {
             if ($child->nodeName == $nodeName) {
                 $child->nodeValue = $nodeVal;
                 return;
             }
+            if (is_null($beforeNode) && in_array($child->nodeName, $before)) {
+                $beforeNode = $child;
+            }
         }
 
-        // If we found a value, function returns.
-        // If we are here, then the node wasn't find.
+        // node not found, we need to create it
         $elem = $this->dom->createElementNS(self::XMLNS, $nodeName, $nodeVal);
-        $urlNode->appendChild($elem);
+        if (is_null($beforeNode)) {
+            $urlNode->appendChild($elem);
+        } else {
+            $urlNode->insertBefore($elem, $beforeNode);
+        }
     }
 
     /**
@@ -176,21 +195,27 @@ abstract class File_Sitemap_Base
         }
 
         // encode XML special chars
-        $url = strtr($url, array('&'=>'&amp;',
-                    '\''=>'&apos;',
-                    '"'=>'&quot;',
-                    '>'=>'&gt;',
-                    '<'=>'&lt;',
-                    ));
+        $url = strtr(
+            $url, array(
+                '&'=>'&amp;',
+                '\''=>'&apos;',
+                '"'=>'&quot;',
+                '>'=>'&gt;',
+                '<'=>'&lt;',
+            )
+        );
         // replace other chars with %nn form
-        $url = preg_replace_callback('/[^0-9a-zA-Z_'.
-                ':\/?#\[\]@!$&\'()*+,;=%~.-]/',
-                'File_Sitemap_Base::_myUrlEncode', $url);
+        $url = preg_replace_callback(
+            '/[^0-9a-zA-Z_'.
+            ':\/?#\[\]@!$&\'()*+,;=%~.-]/',
+            'File_Sitemap_Base::_myUrlEncode', $url
+        );
 
         if (strlen($url) > 2048) {
             throw new File_Sitemap_Exception(
-                    'URL must not be longer than 2048 chars.',
-                    File_Sitemap_Exception::PARSE_ERROR);
+                'URL must not be longer than 2048 chars.',
+                File_Sitemap_Exception::PARSE_ERROR
+            );
         }
 
         return $url;
@@ -211,8 +236,12 @@ abstract class File_Sitemap_Base
      */
     protected function parseDateTime($datetime)
     {
-        if (preg_match('/^\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?'.
-                                '([+-]\d{2}:\d{2}|Z))?)?)?$/', $datetime)) {
+        $valid = preg_match(
+            '/^\d{4}(-\d{2}(-\d{2}(T\d{2}:\d{2}(:\d{2}(\.\d+)?)?'.
+            '([+-]\d{2}:\d{2}|Z))?)?)?$/',
+            $datetime
+        );
+        if ($valid) {
             return $datetime;
         }
 
@@ -317,8 +346,8 @@ abstract class File_Sitemap_Base
      *    or ping site error.
      */
     public function notify($url,
-            $site = 'http://www.google.com/webmasters/sitemaps/ping')
-    {
+        $site = 'http://www.google.com/webmasters/sitemaps/ping'
+    ) {
         $this->_includeHTTPRequest();
 
         // check that $url exists

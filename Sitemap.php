@@ -33,7 +33,7 @@
  *
  * @category File
  * @package  File_Sitemap
- * @author   Charles Brunet <charles.fmj@gmail.com>
+ * @author   Charles Brunet <cbrunet@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
  * @version  CVS: $Id$
  * @link     http://pear.php.net/package/File_Sitemap
@@ -47,7 +47,7 @@ require_once "File/Sitemap/Base.php";
  *
  * @category File
  * @package  File_Sitemap
- * @author   Charles Brunet <charles.fmj@gmail.com>
+ * @author   Charles Brunet <cbrunet@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
  * @version  Release: @package_version@
  * @link     http://pear.php.net/package/File_Sitemap
@@ -83,8 +83,8 @@ class File_Sitemap extends File_Sitemap_Base
      * @return void
      */
     public function add($loc, $priority = 0.5, $changefreq = null,
-            $lastmod = null)
-    {
+        $lastmod = null
+    ) {
         if (!is_array($loc)) {
             $loc = array($loc);
         }
@@ -103,9 +103,9 @@ class File_Sitemap extends File_Sitemap_Base
                 $url->appendChild($elemLoc);
             }
 
-            if ($priority !== null) {
-                $priority = $this->parsePriority($priority);
-                $this->updateNode($url, 'priority', $priority);
+            if ($lastmod !== null) {
+                $lastmod = $this->parseDateTime($lastmod);
+                $this->updateNode($url, 'lastmod', $lastmod);
             }
 
             if ($changefreq !== null) {
@@ -113,9 +113,9 @@ class File_Sitemap extends File_Sitemap_Base
                 $this->updateNode($url, 'changefreq', $changefreq);
             }
 
-            if ($lastmod !== null) {
-                $lastmod = $this->parseDateTime($lastmod);
-                $this->updateNode($url, 'lastmod', $lastmod);
+            if ($priority !== null) {
+                $priority = $this->parsePriority($priority);
+                $this->updateNode($url, 'priority', $priority);
             }
 
             $this->dom->documentElement->appendChild($url);

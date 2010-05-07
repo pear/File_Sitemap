@@ -32,7 +32,7 @@
  *
  * @category File
  * @package  File_Sitemap
- * @author   Charles Brunet <charles.fmj@gmail.com>
+ * @author   Charles Brunet <cbrunet@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
  * @version  CVS: $Id$
  * @link     http://pear.php.net/package/File_Sitemap
@@ -45,7 +45,7 @@ require_once "File/Sitemap/Base.php";
  *
  * @category File
  * @package  File_Sitemap
- * @author   Charles Brunet <charles.fmj@gmail.com>
+ * @author   Charles Brunet <cbrunet@php.net>
  * @license  http://www.opensource.org/licenses/bsd-license.html BSD License
  * @version  Release: @package_version@
  * @link     http://pear.php.net/package/File_Sitemap
