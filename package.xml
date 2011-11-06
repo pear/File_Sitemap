@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.0" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
  <name>File_Sitemap</name>
  <channel>pear.php.net</channel>
  <summary>Create and manage sitemap files.</summary>
@@ -13,10 +13,10 @@
   <email>cbrunet@php.net</email>
   <active>yes</active>
  </lead>
- <date>2010-05-07</date>
- <time>15:18:51</time>
+ <date>2011-11-06</date>
+ <time>17:49:26</time>
  <version>
-  <release>0.1.3</release>
+  <release>0.1.4</release>
   <api>0.9</api>
  </version>
  <stability>
@@ -25,21 +25,16 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.html">BSD License</license>
  <notes>
-* Corrected bug with element order (#17293)
-* Updated coding standards
+QA release
+Fix dir structure
  </notes>
  <contents>
-  <dir baseinstalldir="File" name="/">
+  <dir baseinstalldir="/" name="/">
    <file baseinstalldir="File" md5sum="6168303b089a5d9c75e534ecb64ebb6f" name="examples/sitemap_example.php" role="doc" />
-   <file baseinstalldir="File" md5sum="6fd4d0bf0c9822c5d891d7d51d4f4817" name="Sitemap/Base.php" role="php">
-    <tasks:replace from="@package_version@" to="version" type="package-info" />
-   </file>
-   <file baseinstalldir="File" md5sum="3f07782b0794f9a01170f9ea7dfb9c05" name="Sitemap/Exception.php" role="php">
-    <tasks:replace from="@package_version@" to="version" type="package-info" />
-   </file>
-   <file baseinstalldir="File" md5sum="513732c285d95752cd830be739e69beb" name="Sitemap/Index.php" role="php">
-    <tasks:replace from="@package_version@" to="version" type="package-info" />
-   </file>
+   <file baseinstalldir="/" md5sum="6c99f0b9df4da455071cdf694925debe" name="File/Sitemap.php" role="php" />
+   <file baseinstalldir="/" md5sum="756bef088b53d77809523940d52d7b80" name="File/Sitemap/Base.php" role="php" />
+   <file baseinstalldir="/" md5sum="94034a2c442a73dc7192310a89e7ced0" name="File/Sitemap/Exception.php" role="php" />
+   <file baseinstalldir="/" md5sum="7a200894d1c4dcaa273ddc91670a740f" name="File/Sitemap/Index.php" role="php" />
    <file baseinstalldir="File" md5sum="0023dba7bc4f72ef279dceae4cfe9e07" name="tests/sitemapindex_add_remove.phpt" role="test" />
    <file baseinstalldir="File" md5sum="808bbbd48eaf0573eacad61c49bcc80d" name="tests/sitemapindex_load_save.phpt" role="test" />
    <file baseinstalldir="File" md5sum="94c10687c59da68405a04e9d0a942265" name="tests/sitemap_add_remove.phpt" role="test" />
@@ -47,9 +42,6 @@
    <file baseinstalldir="File" md5sum="5cbbe5f8273b7ee54edba1d67e1875bc" name="tests/sitemap_parse.phpt" role="test" />
    <file baseinstalldir="File" md5sum="1f1993044f493a49e19ea7d08e90c389" name="tests/sitemap_test.phpt" role="test" />
    <file baseinstalldir="File" md5sum="d30eb9c9b9d67a5826bc381d0c1ac235" name="tests/sitemap_validate.phpt" role="test" />
-   <file baseinstalldir="File" md5sum="2c5c96bc9c2a878755287eae3f09d492" name="Sitemap.php" role="php">
-    <tasks:replace from="@package_version@" to="version" type="package-info" />
-   </file>
   </dir>
  </contents>
  <dependencies>
@@ -72,6 +64,11 @@
     <name>HTTP_Request</name>
     <channel>pear.php.net</channel>
    </package>
+   <package>
+    <name>PHPUnit</name>
+    <channel>pear.phpunit.de</channel>
+    <min>3.6.0</min>
+   </package>
   </optional>
  </dependencies>
  <phprelease />
@@ -90,6 +87,22 @@
    <notes>
 * Corrected bug with element order (#17293)
 * Updated coding standards
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.1.4</release>
+    <api>0.9</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-11-06</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.html">BSD License</license>
+   <notes>
+QA release
+Fix dir structure
    </notes>
   </release>
  </changelog>
