@@ -13,8 +13,8 @@
   <email>cbrunet@php.net</email>
   <active>yes</active>
  </lead>
- <date>2011-11-06</date>
- <time>17:49:26</time>
+ <date>2011-12-11</date>
+ <time>22:16:07</time>
  <version>
   <release>0.1.4</release>
   <api>0.9</api>
@@ -27,14 +27,16 @@
  <notes>
 QA release
 Fix dir structure
+Bug #17799 Tests fail on CI server
+Bug #17293 Incorrect elements placement
  </notes>
  <contents>
   <dir baseinstalldir="/" name="/">
    <file baseinstalldir="File" md5sum="6168303b089a5d9c75e534ecb64ebb6f" name="examples/sitemap_example.php" role="doc" />
-   <file baseinstalldir="/" md5sum="6c99f0b9df4da455071cdf694925debe" name="File/Sitemap.php" role="php" />
-   <file baseinstalldir="/" md5sum="756bef088b53d77809523940d52d7b80" name="File/Sitemap/Base.php" role="php" />
-   <file baseinstalldir="/" md5sum="94034a2c442a73dc7192310a89e7ced0" name="File/Sitemap/Exception.php" role="php" />
-   <file baseinstalldir="/" md5sum="7a200894d1c4dcaa273ddc91670a740f" name="File/Sitemap/Index.php" role="php" />
+   <file baseinstalldir="/" md5sum="311bf9428f0825c39e744c2c77f54996" name="File/Sitemap.php" role="php" />
+   <file baseinstalldir="/" md5sum="3d6dac5ba34b1079af7981e3e8ba88b5" name="File/Sitemap/Base.php" role="php" />
+   <file baseinstalldir="/" md5sum="da627905bb1138e695a1dacc0616d486" name="File/Sitemap/Exception.php" role="php" />
+   <file baseinstalldir="/" md5sum="00f73f8c5f9b3a6e4b909ae3d3d4ed40" name="File/Sitemap/Index.php" role="php" />
    <file baseinstalldir="File" md5sum="0023dba7bc4f72ef279dceae4cfe9e07" name="tests/sitemapindex_add_remove.phpt" role="test" />
    <file baseinstalldir="File" md5sum="808bbbd48eaf0573eacad61c49bcc80d" name="tests/sitemapindex_load_save.phpt" role="test" />
    <file baseinstalldir="File" md5sum="94c10687c59da68405a04e9d0a942265" name="tests/sitemap_add_remove.phpt" role="test" />
@@ -42,6 +44,7 @@ Fix dir structure
    <file baseinstalldir="File" md5sum="5cbbe5f8273b7ee54edba1d67e1875bc" name="tests/sitemap_parse.phpt" role="test" />
    <file baseinstalldir="File" md5sum="1f1993044f493a49e19ea7d08e90c389" name="tests/sitemap_test.phpt" role="test" />
    <file baseinstalldir="File" md5sum="d30eb9c9b9d67a5826bc381d0c1ac235" name="tests/sitemap_validate.phpt" role="test" />
+   <file baseinstalldir="/" md5sum="89627d8bd1f7982d454bfc169c3a8c99" name="README" role="data" />
   </dir>
  </contents>
  <dependencies>
@@ -98,11 +101,13 @@ Fix dir structure
     <release>alpha</release>
     <api>alpha</api>
    </stability>
-   <date>2011-11-06</date>
+   <date>2011-12-11</date>
    <license uri="http://www.opensource.org/licenses/bsd-license.html">BSD License</license>
    <notes>
 QA release
 Fix dir structure
+Bug #17799 Tests fail on CI server
+Bug #17293 Incorrect elements placement
    </notes>
   </release>
  </changelog>
