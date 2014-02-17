@@ -8,7 +8,7 @@
     ],
     "autoload": {
         "psr-0": {
-            "File_Sitemap": "./"
+            "File": "./"
         }
     },
     "description": "More info available on: http://pear.php.net/package/File_Sitemap",
@@ -27,5 +27,8 @@
     },
     "require-dev": {
         "phpunit/phpunit": "*"
+    },
+    "suggest": {
+        "pear/http_request": "Install optionally via your project's composer.json"
     }
 }
