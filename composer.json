@@ -1,0 +1,31 @@
+{
+    "authors": [
+        {
+            "email": "cbrunet@php.net",
+            "name": "Charles Brunet",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "File_Sitemap": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/File_Sitemap",
+    "include-path": [
+        "./"
+    ],
+    "license": "BSD License",
+    "name": "pear/file_sitemap",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=File_Sitemap",
+        "source": "https://github.com/pear/File_Sitemap"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
